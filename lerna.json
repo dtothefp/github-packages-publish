@@ -1,11 +1,13 @@
 {
-  "packages": ["packages/*"],
-  "version": "1.0.3",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "1.0.4",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "publish": {
-      "registry":"https://npm.pkg.github.com/"
+      "registry": "https://npm.pkg.github.com/"
     }
   }
 }
