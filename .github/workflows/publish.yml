@@ -32,7 +32,7 @@ jobs:
               git checkout master
               git config --global user.name "dtothefp"
               git config --global user.email "dtothefp@gmail.com"
-              yarn lerna publish \
+              yarn lerna publish patch \
               --registry "https://npm.pkg.github.com/" \
               --yes \
               --no-verify-access \
