@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: dtothefp/actions-ci-env
+    - uses: dtothefp/actions-ci-env@master
     - uses: dtothefp/setup-node@dfp-auth
       with:
         node-version: 12
