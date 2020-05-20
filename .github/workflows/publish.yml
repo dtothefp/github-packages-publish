@@ -32,7 +32,10 @@ jobs:
               git checkout master
               git config --global user.name "dtothefp"
               git config --global user.email "dtothefp@gmail.com"
+              git remote set-url origin "git@github.com:dtothefp/github-packages-publish.git"
               git remote show origin
+              git config user.name
+              git config user.email
               yarn lerna publish patch \
               --registry "https://npm.pkg.github.com/" \
               --yes \
@@ -51,4 +54,6 @@ jobs:
               --preid "${BRANCH_NAME}-${GITHUB_SHA:0:7}"
             fi
       env:
+        NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+        NPM_TOKEN_GRX: ${{secrets.NPM_TOKEN_GRX}}
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
