@@ -56,15 +56,16 @@ jobs:
               --exact \
               --force-publish
             else
-              yarn lerna publish \
-              --registry "https://npm.pkg.github.com/" \
-              --yes \
-              --no-verify-access \
-              --canary \
-              --no-push \
-              --exact \
-              --force-publish \
-              --preid "${BRANCH_NAME}-${GITHUB_SHA:0:7}"
+              # yarn lerna publish \
+              # --registry "https://npm.pkg.github.com/" \
+              # --yes \
+              # --no-verify-access \
+              # --canary \
+              # --no-push \
+              # --exact \
+              # --force-publish \
+              # --preid "${BRANCH_NAME}-${GITHUB_SHA:0:7}"
+              echo "skip publish"
             fi
       env:
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
