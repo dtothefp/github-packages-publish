@@ -9,9 +9,6 @@ on:
       home:
         description: 'location'
         required: false
-      branch:
-        description: 'branch to merge from '
-        required: true
 jobs:
   say_hello:
     runs-on: ubuntu-latest
@@ -32,6 +29,6 @@ jobs:
         uses: devmasx/merge-branch@v1.3.0
         with:
           type: now
-          from_branch: ${{ github.event.inputs.home }}
+          from_branch: devel
           target_branch: master
           github_token: ${{ secrets.GITHUB_TOKEN }}
