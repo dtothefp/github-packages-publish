@@ -56,7 +56,7 @@ jobs:
               --exact \
               --force-publish
             else
-              yarn lerna publish \
+              yarn lerna publish patch \
               --registry "https://npm.pkg.github.com/" \
               --yes \
               --no-verify-access \
