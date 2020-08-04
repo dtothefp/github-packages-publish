@@ -1,7 +1,20 @@
 name: publish-packages
 on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+      message:
+        description: 'the commit message'
+        required: true
+        default: 'The default message'
   push:
-    branches: [master]
+    branches: [master,devel]
   pull_request:
     branches: '*'
 jobs:
