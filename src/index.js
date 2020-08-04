@@ -1,1 +1,1 @@
-console.log('please publish update');
+console.log('please publish update another trigger inception');
