@@ -9,6 +9,10 @@ on:
       home:
         description: 'location'
         required: false
+      message:
+        description: 'the commit message'
+        required: true
+        default: 'The default message'
 jobs:
   say_hello:
     runs-on: ubuntu-latest
@@ -18,15 +22,18 @@ jobs:
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
         echo "The Branch $BRANCH_NAME"
-  merge_me:
-    name: Merge Branch
+  merge_devel_to_master:
+    name: Merge Devel to Master
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Merge branch -> master
-        uses: devmasx/merge-branch@v1.3.0
-        with:
-          type: now
-          from_branch: devel
-          target_branch: master
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/dtothefp/github-packages-publish/merges \
+            -d '{"base": "master", "head": "devel", "commit_message": "$COMMIT_MESSAGE"}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_MESSAGE: ${{ github.event.inputs.message }}
